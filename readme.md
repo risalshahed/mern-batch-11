@@ -12,6 +12,12 @@ https://github.com/risalshahed/mern-batch-11.git
 cd mern-batch-11
 ```
 
+### Switch to the Branch
+
+```bash
+git switch module-19-reset-password
+```
+
 ### Run the Project Locally
 
 ```bash
