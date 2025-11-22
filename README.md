@@ -12,12 +12,6 @@ https://github.com/risalshahed/mern-batch-11.git
 cd mern-batch-11
 ```
 
-### Switch to the Branch
-
-```bash
-git switch module-23-todo-react-tw
-```
-
 ### Run the Project Locally
 
 ```bash
