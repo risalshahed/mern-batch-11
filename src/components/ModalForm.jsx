@@ -61,7 +61,7 @@ const ModalForm = ({ isOpen, onClose, initialTitle, onFormSubmit }) => {
             <button
               type="submit"
               className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-              
+              disabled={!title.trim()}
             >
               {initialTitle ? 'Update' : 'Add'} Form
             </button>
