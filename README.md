@@ -1,4 +1,8 @@
-# Todo CRUD App with React & Tailwind
+# Master Tailwind with React
+
+- The Starter Code for this Module 24 is the End code of Module 23, This class's topic is continuation from the last class will be found from the following link
+
+[Module-24-Starter-Code](https://github.com/risalshahed/mern-batch-11/tree/module-23-todo-react-tw)
 
 ### Clone the Repository
 
@@ -15,7 +19,7 @@ cd mern-batch-11
 ### Switch to the Branch
 
 ```bash
-git switch module-23-todo-react-tw
+git switch module-24-react-tw-master
 ```
 
 ### Run the Project Locally

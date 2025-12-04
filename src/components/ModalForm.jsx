@@ -8,10 +8,26 @@ const ModalForm = ({ isOpen, onClose, initialTitle, onFormSubmit }) => {
     setTitle(initialTitle)
   }, [initialTitle]);
 
+  // useEffect run hoy Component er 1st RENDER er Pore
+
   // Focus on the Input When the Modal is Open
   useEffect(() => {
+    // if (isOpen) inputRef.current?.focus();
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 0);
   }, [isOpen]);
+
+  // Close on Esc key
+  useEffect(() => {
+    function handleKey(e) {
+      // console.log(e);
+      if(e.key === 'Escape') onClose();
+    }
+
+    if(isOpen) document.addEventListener('keydown', handleKey);
+
+    // Cleanup
+    document.removeEventListener('keydown', handleKey);
+  }, [isOpen, onClose]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,14 +43,14 @@ const ModalForm = ({ isOpen, onClose, initialTitle, onFormSubmit }) => {
   // isOpen = false
   if( ! isOpen ) return;
 
-  
-  // Keyboard er Escape a click korle Modal Close hobe (Mandatory)
-  // onBlur (Optional)
-
   // // else
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-40">
-      <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-lg">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-40" onClick={onClose}>
+      {/* Modal */}
+      <div
+        onClick={e => e.stopPropagation()}
+        className="bg-white rounded-xl w-full max-w-md p-6 shadow-lg"
+      >
         <h2 className="text-xl font-semibold mb-4">
           {/* Edit / Add */}
           {initialTitle ? 'Edit' : 'Add'} Todo
@@ -61,13 +77,17 @@ const ModalForm = ({ isOpen, onClose, initialTitle, onFormSubmit }) => {
             <button
               type="submit"
               className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-              disabled={!title.trim()}
+              // disabled={true}
+              // disabled={!title ? true : false}
+              // disabled={!title && true}
+              disabled={!title.trim()}            
             >
               {initialTitle ? 'Update' : 'Add'} Form
             </button>
           </div>
         </form>
       </div>
+      {/* END of Modal */}
     </div>
   )
 }
